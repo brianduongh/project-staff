@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Our CSS style sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+</head>
+
+<body>
+  Name:<input id="name" type="text">
+  Position:<input id="position" type="text">
+  <button id="submit-info" type="submit">Submit</button>
+  <div id="staff-list">
+    <div id="staff-name"></div>
+    <div id="staff-position"></div>
+  </div>
+
+  </button>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript">
+    // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBT-S1aseZ4Tcj_ol8sYcPOc3zjAQEjCt0",
+        authDomain: "bootcamp-94962.firebaseapp.com",
+        databaseURL: "https://bootcamp-94962.firebaseio.com",
+        projectId: "bootcamp-94962",
+        storageBucket: "bootcamp-94962.appspot.com",
+        messagingSenderId: "779557650149"
+      };
+      firebase.initializeApp(config);
+      var database = firebase.database();
+
+      // Create variables
+
+      // See if connected to database and populate with data
+      database.ref("staff").on("child_added", function(snapshot) {
+        //
+        $("#staff-name").append(snapshot.val().name);
+        $("#staff-position").append(snapshot.val().position);
+        console.log(snapshot.val().name);
+        // console.log(snapshot.val().position);
+      });
+
+      // On submit click, add values to database
+      $("#submit-info").on("click", function() {
+        // Grab text element for data
+        name = $("#name").val().trim();
+        position = $("#position").val().trim();
+
+        console.log($("#name").val().trim());
+        // Set data to database
+        database.ref("staff").push({
+          name: $("#name").val().trim(),
+          position: $("#position").val().trim(),
+        })
+      })
+
+
+
+    </script>
+
+</body>
+</html>
