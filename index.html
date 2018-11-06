@@ -14,12 +14,19 @@
 </head>
 
 <body>
-  Name:<input id="name" type="text">
-  Position:<input id="position" type="text">
+  Name: <input id="name" type="text">
+  Position: <input id="position" type="text">
+  State Date: <input id="startDate" type="text">
+  Months Worked: <input id="months-worked" type="text">
+  Monthly Rate: <input id="monthly-rate" type="text">
   <button id="submit-info" type="submit">Submit</button>
   <div id="staff-list">
-    <div id="staff-name"></div>
-    <div id="staff-position"></div>
+    <div id="staff-name">Name: </div>
+    <div id="staff-position">Position: </div>
+    <div id="staff-date">Start-Date: </div>
+    <div id="months-total">Months Worked: </div>
+    <div id="rate-total">Monthly Rate: </div>
+    <div id="total-billed">Total Billed: </div>
   </div>
 
   </button>
@@ -44,11 +51,16 @@
       // Create variables
 
       // See if connected to database and populate with data
-      database.ref("staff").on("child_added", function(snapshot) {
+      database.ref("staff").on("child_added", function(childSnapshot) {
         //
-        $("#staff-name").append(snapshot.val().name);
-        $("#staff-position").append(snapshot.val().position);
-        console.log(snapshot.val().name);
+        $("#staff-name").append(childSnapshot.val().name);
+        $("#staff-position").append(childSnapshot.val().position);
+        $("#staff-date").append(childSnapshot.val().startDate);
+        $("#months-total").append(childSnapshot.val().monthsWorked);
+        $("#rate-total").append(childSnapshot.val().monthlyRate);
+        $("#total-billed").append(childSnapshot.val().monthsWorked * childSnapshot.val().monthlyRate);
+        // $("#staff-bill").append(childSnapshot.val().monthsWorked * childSnapshot.val().monthlyRate)
+        console.log(childSnapshot.val().name);
         // console.log(snapshot.val().position);
       });
 
@@ -57,12 +69,18 @@
         // Grab text element for data
         name = $("#name").val().trim();
         position = $("#position").val().trim();
+        startDate = $("#startDate").val().trim();
+        monthsWorked = $("#months-worked").val().trim();
+        monthlyRate = $("#monthly-rate").val().trim();
 
         console.log($("#name").val().trim());
         // Set data to database
         database.ref("staff").push({
-          name: $("#name").val().trim(),
-          position: $("#position").val().trim(),
+          name: name,
+          position: position,
+          startDate: startDate,
+          monthsWorked: monthsWorked,
+          monthlyRate: monthlyRate
         })
       })
 
