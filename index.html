@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .card-body {
+           display: flex;
+           flex-wrap: wrap;
+           justify-content: center;
+
+           margin: 15px;
+           width: 100%;
+           height: 20%;
+           background-color: gray;
+       }
+
+       .container
+       {
+           width: 100%;
+           padding: 15px;
+           
+       }
+
+
+
+       .form-group, .row{
+           margin: 0;
+           padding:0;
+       }
+
+       .btn {
+           margin: 10px 0;
+       }
+
+    header
+    {
+    margin: 25px;
+    font-size: 30px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+
+    }
+    h2{
+        font-size: 40px;
+
+    }
+
+    p
+    {
+        font-size: 15px;
+    }
+
+    h2,p 
+    {
+        text-align: center;
+        font-weight: bold;
+
+    }
+</style>
+
+<body>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="container">
+
+                <header>
+                    <h2>Employee Data Management</h2>
+                    <p>A comprehensive Directory of Employement Billing hours</p>
+                </header>
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Start Date</th>
+                                <th>Months worked</th>
+                                <th>Monthly rate</th>
+                                <th>Total billed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jack</td>
+                                <td>CEO</td>
+                                <td>11/23/2018</td>
+                                <td>1</td>
+                                <td>7000</td>
+                                <td>7000</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card-body">
+                <!-- Sign-up Form (note the various input "types")-->
+                <form role="form">
+                    <h1>
+                        New Employee card
+                    </h1>
+                    <div class="form-group row">
+                        <label for="name-input">Name</label>
+                        <input class="form-control" id="name-input" type="text">
+                    </div>
+                    <div class="form-group row">
+                        <label for="role-input">Role</label>
+                        <input class="form-control" id="email-input" type="text">
+                    </div>
+                    <div class="form-group row">
+                        <label for="age-input">Start Date</label>
+                        <input class="form-control" id="age-input" type="date">
+                    </div>
+                    <div class="form-group row">
+                        <label for="age-input">Months Worked</label>
+                        <input class="form-control" id="age-input" type="number">
+                    </div>
+                    <div class="form-group row">
+                        <label for="age-input">Monthly Rates</label>
+                        <input class="form-control" id="age-input" type="number">
+                    </div>
+                    <div class="form-group row">
+                        <label for="age-input">Total Billed</label>
+                        <input class="form-control" id="age-input" type="number">
+                    </div>
+                    <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
